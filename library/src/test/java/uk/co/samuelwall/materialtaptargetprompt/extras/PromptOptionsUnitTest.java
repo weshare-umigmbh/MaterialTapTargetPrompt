@@ -697,6 +697,14 @@ public class PromptOptionsUnitTest
     }
 
     @Test
+    public void testPromptOptions_FocalAnimationDuration()
+    {
+        final PromptOptions options = UnitTestUtils.createPromptOptions();
+        assertEquals(options, options.setFocalAnimationDuration(500));
+        assertEquals(500, options.getFocalAnimationDuration());
+    }
+
+    @Test
     public void testPromptOptions_AnimationInterpolator_Null()
     {
         final PromptOptions options = UnitTestUtils.createPromptOptions();

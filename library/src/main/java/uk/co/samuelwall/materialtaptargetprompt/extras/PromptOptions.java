@@ -139,6 +139,11 @@ public class PromptOptions<T extends PromptOptions>
     @Nullable private Interpolator mAnimationInterpolator;
 
     /**
+     * The duration in milliseconds for focal animations.
+     */
+    private int mFocalAnimationDuration = 500;
+
+    /**
      * The drawable to use to render the target.
      */
     @Nullable private Drawable mIconDrawable;
@@ -881,6 +886,29 @@ public class PromptOptions<T extends PromptOptions>
     public Interpolator getAnimationInterpolator()
     {
         return mAnimationInterpolator;
+    }
+
+    /**
+     * Set the focal duration animation time.
+     *
+     * @param duration The duration in milliseconds
+     * @return This Builder object to allow for chaining of calls to set methods
+     */
+    @NonNull
+    public T setFocalAnimationDuration(final int duration)
+    {
+        mFocalAnimationDuration = duration;
+        return (T) this;
+    }
+
+    /**
+     * Get the focal animation duration that is used.
+     *
+     * @return The ocal animation duration that is used.
+     */
+    public int getFocalAnimationDuration()
+    {
+        return mFocalAnimationDuration;
     }
 
     /**

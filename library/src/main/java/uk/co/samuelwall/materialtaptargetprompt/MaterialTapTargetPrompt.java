@@ -579,7 +579,7 @@ public class MaterialTapTargetPrompt
 
         mAnimationFocalRipple = ValueAnimator.ofFloat(1.1f, 1.6f);
         mAnimationFocalRipple.setInterpolator(mView.mPromptOptions.getAnimationInterpolator());
-        mAnimationFocalRipple.setDuration(500);
+        mAnimationFocalRipple.setDuration(mView.mPromptOptions.getFocalAnimationDuration());
         mAnimationFocalRipple.addUpdateListener(animation -> {
             final float value = (float) animation.getAnimatedValue();
             mView.mPromptOptions.getPromptFocal().updateRipple(value, (1.6f - value) * 2);
