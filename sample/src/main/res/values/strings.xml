@@ -54,6 +54,10 @@
     <string name="example_no_auto_dismiss_title">No auto dismiss</string>
     <string name="example_no_auto_dismiss_description">Displays prompt over the FAB button that can only be dismissed by pressing the FAB button</string>
 
+    <string name="example_focal_animation_duration_title">Focal animation duration</string>
+    <string name="example_focal_animation_duration_description">Duration in ms</string>
+    <string name="example_focal_animation_duration_default_value">500</string>
+
     <string name="kotlin_activity_title">Kotlin</string>
     <string name="kotlin_activity_description">Examples written in Kotlin</string>
 

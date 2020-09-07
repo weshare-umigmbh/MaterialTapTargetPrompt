@@ -27,6 +27,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true">
         <LinearLayout
+                android:focusableInTouchMode="true"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -228,6 +229,41 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/example_no_auto_dismiss_description"/>
             </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/focal_animation_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/example_item_top_padding"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_focal_animation_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="@dimen/example_button_width"
+                    android:onClick="showFocalAnimationDuration"
+                    android:text="@string/example_focal_animation_duration_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/button_focal_animation_duration"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/button_focal_animation_duration"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:hintAnimationEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/focal_animation_duration_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/example_focal_animation_duration_description"
+                        android:inputType="number"
+                        android:text="@string/example_focal_animation_duration_default_value" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.legacy.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="40dp"/>

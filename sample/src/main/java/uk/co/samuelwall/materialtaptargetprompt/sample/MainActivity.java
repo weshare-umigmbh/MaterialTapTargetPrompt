@@ -17,15 +17,18 @@
 package uk.co.samuelwall.materialtaptargetprompt.sample;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -343,6 +346,32 @@ public class MainActivity extends AppCompatActivity
                         mFabPrompt = null;
                     }
                 })
+                .show();
+    }
+
+    public void showFocalAnimationDuration(View view) {
+        if (mFabPrompt != null) {
+            mFabPrompt.dismiss();
+        }
+
+        int providedValue = Integer.parseInt((
+                (EditText) findViewById(R.id.focal_animation_duration_value)).getText().toString());
+
+        final FullscreenPromptBackground background = new FullscreenPromptBackground();
+        RectanglePromptFocal focal = new RectanglePromptFocal();
+        focal.setCornerRadius(400F, 400F);
+        mFabPrompt = new MaterialTapTargetPrompt.Builder(MainActivity.this)
+                .setTarget(view)
+                .setPrimaryTextColour(Color.WHITE)
+                .setBackgroundColour(Color.argb(230, 36, 40, 47))
+                .setPromptBackground(background)
+                .setPrimaryTextGravity(Gravity.CENTER_HORIZONTAL)
+                .setSecondaryTextGravity(Gravity.CENTER_HORIZONTAL)
+                .setPrimaryText("Animation duration")
+                .setSecondaryText("The blink animation speed will be changed by the provided value.")
+                .setPromptFocal(focal)
+                .setFocalAnimationDuration(providedValue)
+                .setAnimationInterpolator(new FastOutSlowInInterpolator())
                 .show();
     }
 
