@@ -545,7 +545,7 @@ public class MaterialTapTargetPrompt
         cleanUpAnimation();
         mAnimationFocalBreathing = ValueAnimator.ofFloat(1, 1.1f, 1);
         mAnimationFocalBreathing.setInterpolator(mView.mPromptOptions.getAnimationInterpolator());
-        mAnimationFocalBreathing.setDuration(1000);
+        mAnimationFocalBreathing.setDuration(mView.mPromptOptions.getFocalBreathingAnimationDuration());
         mAnimationFocalBreathing.setStartDelay(225);
         mAnimationFocalBreathing.setRepeatCount(ValueAnimator.INFINITE);
         mAnimationFocalBreathing.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
@@ -579,7 +579,7 @@ public class MaterialTapTargetPrompt
 
         mAnimationFocalRipple = ValueAnimator.ofFloat(1.1f, 1.6f);
         mAnimationFocalRipple.setInterpolator(mView.mPromptOptions.getAnimationInterpolator());
-        mAnimationFocalRipple.setDuration(mView.mPromptOptions.getFocalAnimationDuration());
+        mAnimationFocalRipple.setDuration(mView.mPromptOptions.getFocalRippleAnimationDuration());
         mAnimationFocalRipple.addUpdateListener(animation -> {
             final float value = (float) animation.getAnimatedValue();
             mView.mPromptOptions.getPromptFocal().updateRipple(value, (1.6f - value) * 2);

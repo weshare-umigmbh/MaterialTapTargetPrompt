@@ -697,11 +697,19 @@ public class PromptOptionsUnitTest
     }
 
     @Test
-    public void testPromptOptions_FocalAnimationDuration()
+    public void testPromptOptions_FocalRippleAnimationDuration()
     {
         final PromptOptions options = UnitTestUtils.createPromptOptions();
-        assertEquals(options, options.setFocalAnimationDuration(500));
-        assertEquals(500, options.getFocalAnimationDuration());
+        assertEquals(options, options.setFocalRippleAnimationDuration(500));
+        assertEquals(500, options.getFocalRippleAnimationDuration());
+    }
+
+    @Test
+    public void testPromptOptions_FocalBreathingAnimationDuration()
+    {
+        final PromptOptions options = UnitTestUtils.createPromptOptions();
+        assertEquals(options, options.setFocalBreathingAnimationDuration(1000));
+        assertEquals(1000, options.getFocalBreathingAnimationDuration());
     }
 
     @Test

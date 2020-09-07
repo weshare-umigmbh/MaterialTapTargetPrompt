@@ -139,9 +139,14 @@ public class PromptOptions<T extends PromptOptions>
     @Nullable private Interpolator mAnimationInterpolator;
 
     /**
-     * The duration in milliseconds for focal animations.
+     * The duration in milliseconds for focal ripple animations.
      */
-    private int mFocalAnimationDuration = 500;
+    private int mFocalRippleAnimationDuration = 500;
+
+    /**
+     * The duration in milliseconds for focal breathing animations.
+     */
+    private int mFocalBreathingAnimationDuration = 1000;
 
     /**
      * The drawable to use to render the target.
@@ -889,26 +894,49 @@ public class PromptOptions<T extends PromptOptions>
     }
 
     /**
-     * Set the focal duration animation time.
+     * Set the focal ripple duration animation time.
      *
      * @param duration The duration in milliseconds
      * @return This Builder object to allow for chaining of calls to set methods
      */
     @NonNull
-    public T setFocalAnimationDuration(final int duration)
+    public T setFocalRippleAnimationDuration(final int duration)
     {
-        mFocalAnimationDuration = duration;
+        mFocalRippleAnimationDuration = duration;
         return (T) this;
     }
 
     /**
-     * Get the focal animation duration that is used.
+     * Get the focal ripple animation duration that is used.
      *
-     * @return The ocal animation duration that is used.
+     * @return The focal ripple animation duration that is used.
      */
-    public int getFocalAnimationDuration()
+    public int getFocalRippleAnimationDuration()
     {
-        return mFocalAnimationDuration;
+        return mFocalRippleAnimationDuration;
+    }
+
+    /**
+     * Set the focal breathing duration animation time.
+     *
+     * @param duration The duration in milliseconds
+     * @return This Builder object to allow for chaining of calls to set methods
+     */
+    @NonNull
+    public T setFocalBreathingAnimationDuration(final int duration)
+    {
+        mFocalBreathingAnimationDuration = duration;
+        return (T) this;
+    }
+
+    /**
+     * Get the focal breathing animation duration that is used.
+     *
+     * @return The focal breathing animation duration that is used.
+     */
+    public int getFocalBreathingAnimationDuration()
+    {
+        return mFocalBreathingAnimationDuration;
     }
 
     /**

@@ -354,8 +354,10 @@ public class MainActivity extends AppCompatActivity
             mFabPrompt.dismiss();
         }
 
-        int providedValue = Integer.parseInt((
-                (EditText) findViewById(R.id.focal_animation_duration_value)).getText().toString());
+        int providedRippleValue = Integer.parseInt((
+                (EditText) findViewById(R.id.focal_ripple_animation_duration_value)).getText().toString());
+        int providedBreathingValue = Integer.parseInt((
+                (EditText) findViewById(R.id.focal_breathing_animation_duration_value)).getText().toString());
 
         final FullscreenPromptBackground background = new FullscreenPromptBackground();
         RectanglePromptFocal focal = new RectanglePromptFocal();
@@ -370,7 +372,8 @@ public class MainActivity extends AppCompatActivity
                 .setPrimaryText("Animation duration")
                 .setSecondaryText("The blink animation speed will be changed by the provided value.")
                 .setPromptFocal(focal)
-                .setFocalAnimationDuration(providedValue)
+                .setFocalRippleAnimationDuration(providedRippleValue)
+                .setFocalBreathingAnimationDuration(providedBreathingValue)
                 .setAnimationInterpolator(new FastOutSlowInInterpolator())
                 .show();
     }

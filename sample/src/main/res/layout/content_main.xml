@@ -247,21 +247,38 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_focal_ripple_animation_duration"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    app:layout_constraintStart_toEndOf="@+id/button_focal_animation_duration"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/button_focal_animation_duration"
+                    app:hintAnimationEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/focal_ripple_animation_duration_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/example_focal_ripple_animation_duration_description"
+                        android:inputType="number"
+                        android:text="@string/example_focal_ripple_animation_duration_default_value" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toEndOf="@+id/button_focal_animation_duration"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/button_focal_animation_duration"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_focal_ripple_animation_duration"
                     app:hintAnimationEnabled="false">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/focal_animation_duration_value"
+                        android:id="@+id/focal_breathing_animation_duration_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/example_focal_animation_duration_description"
+                        android:hint="@string/example_focal_breathing_animation_duration_description"
                         android:inputType="number"
-                        android:text="@string/example_focal_animation_duration_default_value" />
+                        android:text="@string/example_focal_breathing_animation_duration_default_value" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.legacy.widget.Space
