@@ -21,7 +21,10 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
@@ -728,6 +731,7 @@ public class MaterialTapTargetPrompt
         Paint paddingPaint = new Paint();
         Paint itemPaint = new Paint();*/
         Drawable mIconDrawable;
+        Bitmap mCrossDrawable;
         float mIconDrawableLeft;
         float mIconDrawableTop;
         PromptTouchedListener mPromptTouchedListener;
@@ -737,6 +741,9 @@ public class MaterialTapTargetPrompt
         PromptOptions mPromptOptions;
         boolean mClipToBounds;
         AccessibilityManager mAccessibilityManager;
+
+        private Rect mRect = new Rect();
+        private Paint mPaint = new Paint();
 
         /**
          * Create a new prompt view.
@@ -818,6 +825,15 @@ public class MaterialTapTargetPrompt
                 canvas.translate(mIconDrawableLeft, mIconDrawableTop);
                 mTargetRenderView.draw(canvas);
                 canvas.translate(-mIconDrawableLeft, -mIconDrawableTop);
+            }
+
+            mCrossDrawable = mPromptOptions.getCrossIconBitmap();
+            if (mCrossDrawable != null) {
+                final float density = Resources.getSystem().getDisplayMetrics().density;
+                final float padding = 32 * density;
+                mPromptOptions.getResourceFinder().getPromptParentView().getWindowVisibleDisplayFrame(mRect);
+                int statusBarHeight = mRect.top;
+                canvas.drawBitmap(mCrossDrawable, padding, padding + statusBarHeight, mPaint);
             }
 
             //Draw the text

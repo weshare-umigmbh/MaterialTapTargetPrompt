@@ -18,6 +18,8 @@ package uk.co.samuelwall.materialtaptargetprompt.extras;
 
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PointF;
 import android.graphics.PorterDuff;
@@ -152,6 +154,8 @@ public class PromptOptions<T extends PromptOptions>
      * The drawable to use to render the target.
      */
     @Nullable private Drawable mIconDrawable;
+
+    @Nullable private Bitmap mCloseIconBitmap;
 
     /**
      * Should the back button press dismiss the prompt.
@@ -998,6 +1002,19 @@ public class PromptOptions<T extends PromptOptions>
     public Drawable getIconDrawable()
     {
         return mIconDrawable;
+    }
+
+    @NonNull
+    public T enableCloseIcon()
+    {
+        mCloseIconBitmap = BitmapFactory.decodeResource(mResourceFinder.getResources(), R.drawable.ic_close);
+        return (T) this;
+    }
+
+    @Nullable
+    public Bitmap getCrossIconBitmap()
+    {
+        return mCloseIconBitmap;
     }
 
     /**
