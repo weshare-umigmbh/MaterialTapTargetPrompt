@@ -21,7 +21,10 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.PointF;
@@ -738,6 +741,13 @@ public class MaterialTapTargetPrompt
         boolean mClipToBounds;
         AccessibilityManager mAccessibilityManager;
 
+        final float density = Resources.getSystem().getDisplayMetrics().density;
+        final float closeIconPadding = 32;
+        final int closeIconOffsetFactor = 2;
+
+        private Rect mRect = new Rect();
+        private Paint mPaint = new Paint();
+
         /**
          * Create a new prompt view.
          *
@@ -820,8 +830,33 @@ public class MaterialTapTargetPrompt
                 canvas.translate(-mIconDrawableLeft, -mIconDrawableTop);
             }
 
+            if (mPromptOptions.getCrossIconBitmap() != null) {
+                drawCloseIcon(canvas, mPromptOptions.getCrossIconBitmap());
+            }
+
             //Draw the text
             mPromptOptions.getPromptText().draw(canvas);
+        }
+
+        private void drawCloseIcon(Canvas canvas, @NonNull Bitmap crossIconBitmap)
+        {
+            final RectF focalBounds = mPromptOptions.getPromptFocal().getBounds();
+            mPromptOptions.getResourceFinder().getPromptParentView().getWindowVisibleDisplayFrame(mRect);
+            int statusBarHeight = mRect.top;
+            int iconVerticalOffset = crossIconBitmap.getHeight() * closeIconOffsetFactor;
+            int iconHorizontalOffset = crossIconBitmap.getWidth() * closeIconOffsetFactor;
+
+            float extendedIconAreaBottom = statusBarHeight + closeIconPadding + crossIconBitmap.getHeight() + iconVerticalOffset;
+            float extendedIconAreaLeft = closeIconPadding - iconHorizontalOffset;
+            float extendedIconAreaTop = statusBarHeight + closeIconPadding - iconVerticalOffset;
+            float extendedIconAreaRight = closeIconPadding + crossIconBitmap.getWidth() + iconHorizontalOffset;
+
+            // ensure that the closeIcon area and the focal animation area are not touching each other
+            if (!focalBounds.intersects(extendedIconAreaLeft, extendedIconAreaTop,
+                    extendedIconAreaRight, extendedIconAreaBottom)
+            ) {
+                canvas.drawBitmap(crossIconBitmap, closeIconPadding * density, closeIconPadding * density + statusBarHeight, mPaint);
+            }
         }
 
         @Override

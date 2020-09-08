@@ -372,6 +372,7 @@ public class MainActivity extends AppCompatActivity
                 .setPrimaryText("Animation duration")
                 .setSecondaryText("The blink animation speed will be changed by the provided value.")
                 .setPromptFocal(focal)
+                .enableCloseIcon()
                 .setFocalRippleAnimationDuration(providedRippleValue)
                 .setFocalBreathingAnimationDuration(providedBreathingValue)
                 .setAnimationInterpolator(new FastOutSlowInInterpolator())

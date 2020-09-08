@@ -169,7 +169,7 @@ public class PromptText implements PromptUIElement
 
         if (verticalTextPositionAbove)
         {
-            mPrimaryTextTop = focalBounds.top - focalPadding;
+            mPrimaryTextTop = focalBounds.top - focalPadding - 100;
             if (mPrimaryTextLayout != null)
             {
                 mPrimaryTextTop -= mPrimaryTextLayout.getHeight();
@@ -177,7 +177,7 @@ public class PromptText implements PromptUIElement
         }
         else
         {
-            mPrimaryTextTop = focalBounds.bottom + focalPadding;
+            mPrimaryTextTop = focalBounds.bottom + focalPadding + 100;
         }
 
         float primaryTextHeight = 0;

@@ -25,8 +25,11 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 
+import uk.co.samuelwall.materialtaptargetprompt.R;
 import uk.co.samuelwall.materialtaptargetprompt.extras.PromptBackground;
 import uk.co.samuelwall.materialtaptargetprompt.extras.PromptOptions;
 import uk.co.samuelwall.materialtaptargetprompt.extras.PromptUtils;
